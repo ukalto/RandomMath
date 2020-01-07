@@ -1,15 +1,20 @@
 <h1>RandomMath Game</h1>
+<div *ngIf="successMessage" class="alert alert-success" role="alert">
+    {{successMessage}}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{errorMessage}}
+  </div>
 <div class="row">
     <div class="col">
-        <form class="form" [formGroup]="gameForm" (ngSubmit)="nextRound()">
-
-            <button style="width: 300px; height: 100px; font-size: 2em" *ngIf="currentRoundNumber === 0" class="btn btn-success" (click)="startGame()">Start</button>
-            <div class="timer" *ngIf="!roundActive">{{nextRoundTimer}}</div>
+        <form class="form" [formGroup]="gameForm">
+            <button style="width: 300px; height: 100px; font-size: 2em" *ngIf="currentRoundNumber === 0 && !roundActive && !nextRoundTimer" class="btn btn-success" (click)="startGame()">Start</button>
+            <div *ngIf="nextRoundTimer !== 0" class="timer">{{nextRoundTimer}}</div>
             <div id="task" *ngIf="roundActive">
                 <div class="border">{{currentRound.number1}}</div> <div class="border">{{currentRound.symbol}}</div>
                 <div class="border">{{currentRound.number2}}</div> <div class="border">=</div>
                 <input type="number" step="0.1" formControlName="resultInput"/>
-                <button id="ok-btn" class="btn btn-primary" (click)="nextRound()">OK</button>
+                <button id="ok-btn" class="btn btn-primary" (click)="stopRound()">OK</button>
                 <div>{{roundTimer}}</div>
             </div>
         </form>

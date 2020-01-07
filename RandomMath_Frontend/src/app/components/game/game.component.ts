@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Round } from './round';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-game',
@@ -10,6 +11,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class GameComponent implements OnInit {
   private gameForm: FormGroup;
 
+  private successMessage: string;
+  private errorMessage: string;
 
   private round: Round[];
   private currentRoundNumber: number;
@@ -18,16 +21,19 @@ export class GameComponent implements OnInit {
   private score: number;
   private nextRoundTimer: number;
   private roundActive: boolean;
-  private roundTimeoutObj;
+  private roundInterval;
+  private nextRoundInterval;
+  private roundTimeout;
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(private formBuilder: FormBuilder, private userService: UserService) { 
     this.gameForm = this.formBuilder.group({
-      result: ['', []],
+      resultInput: ['', []],
     });
     this.round = new Array(10);
-    this.currentRoundNumber = 0;
     this.score = 0;
     this.initGame();
+    this.currentRoundNumber = 0;
+    this.currentRound = this.round[this.currentRoundNumber];
   }
 
   initGame() {
@@ -37,69 +43,88 @@ export class GameComponent implements OnInit {
   }
 
   startGame() {
-    this.currentRound = this.round[this.currentRoundNumber];
-    this.nextRoundTimer = 6;
     this.startNextRoundTimer();
-    setTimeout(() => {
-      // start next round in 5 seconds
-      this.roundTimer = 16;
-      this.startRoundTimer();
-      this.roundActive = true;
-
-      this.roundTimeoutObj = setTimeout(() => this.stopRound(), 150000);
-    },5000);
-  }
-
-  nextRound() {
-    this.stopRound();
-    this.currentRound = this.round[this.currentRoundNumber];
-    this.nextRoundTimer = 6;
-    this.startNextRoundTimer();
-    setTimeout(() => {
-      // start next round in 5 seconds
-      this.roundTimer = 16;
-      this.startRoundTimer();
-      this.roundActive = true;
-
-      this.roundTimeoutObj = setTimeout(() => this.stopRound(), 150000);
-    },5000);
-  }
-
-  stopRound() {
-    this.roundActive = false;
-    if (this.roundTimeoutObj) clearTimeout(this.roundTimeoutObj);
-    const input = parseFloat(this.gameForm.controls.resultInput.value);
-    const flooredInput = Math.floor(input * 10) / 10;
-    if (flooredInput === this.currentRound.result) {
-      this.score++;
-      // show successMessage
-    } else {
-      // show error message
-    }
-    if (this.currentRoundNumber !== 9) { 
-      this.currentRoundNumber++;
-      this.nextRound();
-    } else {
-      // show last round message and score..
-    }
+    this.startNextRoundIn5Seconds();
   }
 
   startNextRoundTimer() {
-    setInterval(() => {
+    this.nextRoundTimer = 5;
+    this.nextRoundInterval = setInterval(() => {
       this.nextRoundTimer--;
-      if (this.nextRoundTimer > 0 && !this.roundActive) {
-        this.startNextRoundTimer();
+      if (this.nextRoundTimer === 0 || this.roundActive) {
+        clearInterval(this.nextRoundInterval);
       }
     }, 1000);
   }
 
   startRoundTimer() {
-    setInterval(() => {
+    this.roundTimer = 15;
+    this.roundInterval = setInterval(() => {
       this.roundTimer--;
-      if (this.roundTimer > 0 && this.roundActive) {
-        this.startRoundTimer();
+      if (this.roundTimer === 0 || !this.roundActive) {
+        clearInterval(this.roundInterval);
       }
     }, 1000);
+  }
+
+  startRound() {
+    this.gameForm.controls.resultInput.setValue('');
+    this.clearMessages();
+    this.nextRoundTimer = 0;
+    this.roundActive = true;
+    this.startRoundTimer();
+    this.startRoundTimeout();
+  }
+
+  startRoundTimeout() {
+    this.roundTimeout = setTimeout(() => {
+      this.stopRound();
+    }, 15000);
+  }
+
+  clearMessages() {
+    this.errorMessage = null;
+    this.successMessage = null;
+  }
+
+  stopRound() {
+    if (this.roundTimeout) clearTimeout(this.roundTimeout);
+    this.roundActive = false;
+    this.checkResult();
+
+    if (this.currentRoundNumber !== 9) {
+      this.currentRoundNumber++;
+      this.currentRound = this.round[this.currentRoundNumber];
+      this.startNextRoundTimer();
+      this.startNextRoundIn5Seconds();
+    } else {
+      // end game
+      this.successMessage = `Your score was ${this.score}.`;
+      this.nextRoundTimer = 0;
+      this.initGame();
+      this.currentRoundNumber = 0;
+      this.currentRound = this.round[this.currentRoundNumber];
+      this.userService.postScore(this.score)
+        .subscribe((result) => console.log(result));
+    }
+  }
+
+  startNextRoundIn5Seconds() {
+    setTimeout(() => {
+      this.startRound();
+    }, 5000);
+  }
+
+  checkResult() {
+    const input = parseFloat(this.gameForm.controls.resultInput.value);
+    const flooredInput = Math.floor(input * 10) / 10;
+    if (flooredInput === this.currentRound.result) {
+      this.score++;
+      this.successMessage = 'Your answer was correct!';
+    } else {
+      // show error message
+      this.errorMessage = 'Your answer was wrong!';
+    }
   }
 
 

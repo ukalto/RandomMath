@@ -1,5 +1,4 @@
 export class ChangeProfileRequest {
-    constructor(public username: string,
-                public email: string,
+    constructor(public email: string,
                 public password: string) {}
 }

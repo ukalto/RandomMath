@@ -1,11 +1,11 @@
 <div class="jumbotron mt-5">
-  <h1 class="display-4">Welcome to RandomMath!</h1>
+  <h1 class="display-4" tyle="color:#343a40">Welcome to RandomMath!</h1>
   <hr class="my-4">
-  <a *ngIf="!authService.isLoggedIn()" class="btn btn-primary btn-lg" routerLink="/login" role="button">Login</a>
+  <a *ngIf="!authService.isLoggedIn()" class="btn2" routerLink="/login" role="button">Login</a>
   <div *ngIf="authService.isLoggedIn()">
-    <p>Check out the game</p>
+    <p style="color:#343a40">Check out the game. I bet, you won't be able to reach a total Score of 10 by only using your brain!</p>
     <p class="lead">
-      <a class="btn btn-primary btn-lg" routerLink="/game" role="button">Game</a>
+      <a class="btn1" routerLink="/game" role="button">Play Game</a>
     </p>
   </div>
 </div>

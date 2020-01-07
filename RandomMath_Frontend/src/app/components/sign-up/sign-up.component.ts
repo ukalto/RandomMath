@@ -55,7 +55,7 @@ export class SignUpComponent implements OnInit {
     this.authService.signUpUser(signUpRequest).subscribe(
       () => {
         console.log('Successfully logged in user: ' + signUpRequest.username);
-        this.router.navigate(['/game']);
+        this.router.navigate(['/']);
       },
       error => {
         console.log('Could not log in due to:');

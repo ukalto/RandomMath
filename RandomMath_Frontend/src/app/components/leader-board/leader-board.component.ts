@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/dtos/user';
 
 @Component({
   selector: 'app-leader-board',
@@ -6,10 +8,40 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./leader-board.component.scss']
 })
 export class LeaderBoardComponent implements OnInit {
+  private sort: string;
+  private sortKey: string;
+  private users: User[];
 
-  constructor() { }
+  constructor(private userService: UserService) { 
+  }
 
   ngOnInit() {
+    this.sortScoreClicked();
+  }
+
+  sortScoreClicked() {
+    this.sort = 'Score';
+    this.sortKey = 'score';
+    this.fetchData();
+  }
+
+  sortPlayedGamesClicked() {
+    this.sort = 'Played games';
+    this.sortKey = 'playedGames';
+    this.fetchData();
+  }
+
+  sortScorePercentageClicked() {
+    this.sort = 'Score percentage';
+    this.sortKey = 'scorePercentage';
+    this.fetchData();
+  }
+
+  fetchData() {
+    this.userService.getUsersOrderedBy(this.sortKey)
+      .subscribe((fetchedData) => {
+        this.users = fetchedData.users;
+      });
   }
 
 }

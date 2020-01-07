@@ -1,1 +1,32 @@
-<p>leader-board works!</p>
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{sort}}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" (click)="sortScoreClicked()">Score</a>
+      <a class="dropdown-item" (click)="sortPlayedGamesClicked()">Played games</a>
+      <a class="dropdown-item" (click)="sortScorePercentageClicked()">Score percentage</a>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Username</th>
+        <th scope="col">Score</th>
+        <th scope="col">Played games</th>
+        <th scope="col">Score percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{user.username}}</td>
+        <td>{{user.score}}</td>
+        <td>{{user.playedGames}}</td>
+        <td>{{user.scorePercentage}}</td>
+
+      </tr>
+    </tbody>
+  </table>

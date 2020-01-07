@@ -13,7 +13,7 @@ import {AuthService} from '../../services/auth.service';
   styleUrls: ['./changeprofile.component.scss']
 })
 export class ChangeProfileComponent implements OnInit {
-  private changedProfileForm: FormGroup;
+  private changeProfileForm: FormGroup;
 
   submitted: boolean = false;
   error: boolean = false;
@@ -23,10 +23,9 @@ export class ChangeProfileComponent implements OnInit {
   
 
   constructor(private userService: UserService, private formBuilder: FormBuilder ,private router: Router) {
-    this.changedProfileForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
+    this.changeProfileForm = this.formBuilder.group({
       email: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.minLength(8)]],
     });
    }
 
@@ -34,14 +33,14 @@ export class ChangeProfileComponent implements OnInit {
     this.userService.getMyUser()
       .subscribe((fetchedUser) => {
         this.user = fetchedUser;
+        this.changeProfileForm.controls.email.setValue(fetchedUser.email);
         console.log(this.user);
       });
   }
    saveProfileChanges(){
     this.submitted = true;
-    if (this.changedProfileForm.valid) {
-      const authRequest: ChangeProfileRequest = new ChangeProfileRequest(this.changedProfileForm.controls.username.value,
-        this.changedProfileForm.controls.email.value, this.changedProfileForm.controls.password.value);
+    if (this.changeProfileForm.valid) {
+      const authRequest: ChangeProfileRequest = new ChangeProfileRequest( this.changeProfileForm.controls.email.value, this.changeProfileForm.controls.password.value);
       this.changeProfileRequest(authRequest);
     } else {
       console.log('Invalid input');
@@ -49,10 +48,10 @@ export class ChangeProfileComponent implements OnInit {
   }
   
   changeProfileRequest(changeProfileRequest: ChangeProfileRequest) {
-    console.log('Try to sign up user: ' + changeProfileRequest.username);
-    this.changeProfileRequest.saveProfileChanges(changeProfileRequest).subscribe(
+    console.log('Try to change user with this email: ' + changeProfileRequest.email);
+    this.userService.saveProfileChanges(changeProfileRequest).subscribe(
       () => {
-        console.log('Successfully changed user: ' + changeProfileRequest.username);
+        console.log('Successfully changed user with this email: ' + changeProfileRequest.email);
         this.router.navigate(['/profile']);
       },
       error => {

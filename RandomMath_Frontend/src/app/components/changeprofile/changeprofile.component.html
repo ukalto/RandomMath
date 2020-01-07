@@ -16,25 +16,14 @@
           </div>
   
           <div class="card-body">
-            <form class="form" [formGroup]="profileForm" (ngSubmit)="saveChanges()">
-  
-              <div class="form-group">
-                  Username:
-                <input type="text" name="username" value={{user.username}} formControlName="username" class="form-control" id="inputUsername"
-                       aria-describedby="usernameHelp" >
-                <div *ngIf="submitted && profileForm.controls.username.errors" class="error">
-                  <small class="form-text text-warning" *ngIf="profileForm.controls.username.errors.required">Your username is
-                    required!
-                  </small>
-                </div>
-              </div>
+            <form class="form" [formGroup]="changeProfileForm" (ngSubmit)="saveChanges()">
 
               <div class="form-group">
                   E-Mail:
-                <input type="text" name="email" value={{user.email}} formControlName="email" class="form-control" id="inputEmail"
+                <input type="text" name="email" formControlName="email" class="form-control" id="inputEmail"
                        aria-describedby="emailHelp" >
-                <div *ngIf="submitted && profileForm.controls.email.errors" class="error">
-                  <small class="form-text text-warning" *ngIf="profileForm.controls.email.errors.required">Your email is
+                <div *ngIf="submitted && changeProfileForm.controls.email.errors" class="error">
+                  <small class="form-text text-warning" *ngIf="changeProfileForm.controls.email.errors.required">Your email is
                     required!
                   </small>
                 </div>
@@ -43,17 +32,17 @@
               <div class="form-group">
                   Password:
                 <input type="password" name="password" formControlName="password" class="form-control" id="password">
-                <div *ngIf="submitted && profileForm.controls.password.errors" class="error">
-                  <small class="form-text text-warning" *ngIf="profileForm.controls.password.errors.required">Your password
+                <div *ngIf="submitted && changeProfileForm.controls.password.errors" class="error">
+                  <small class="form-text text-warning" *ngIf="changeProfileForm.controls.password.errors.required">Your password
                     is
                     required!
                   </small>
-                  <small class="form-text text-warning" *ngIf="profileForm.controls.password.errors.minlength">Your password
+                  <small class="form-text text-warning" *ngIf="changeProfileForm.controls.password.errors.minlength">Your password
                     must be at least 8 characters long!
                   </small>
                 </div>
               </div>
-              <button type="button" (click)="saveChanges()" class="btn btn-success float-right">Save changes</button>  
+              <button type="button" (click)="saveProfileChanges()" class="btn btn-success float-right">Save changes</button>  
             </form>
           </div>
   

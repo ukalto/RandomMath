@@ -177,8 +177,8 @@ function editUser(username, updatedValue){
                         email: foundUser.email,
                         password: foundUser.password,
                         score: foundUser.score,
-                        allPoints: foundUser.allPoints,
                         playedGames: foundUser.playedGames,
+                        scorePercentage: foundUser.scorePercentage
                     };
 
                     if (updatedValue.email) {

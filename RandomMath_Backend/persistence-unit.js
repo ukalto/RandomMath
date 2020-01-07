@@ -31,9 +31,9 @@ function getUserByEmailOrUsername(username) {
 }
 
 function getUsersSortedBy(sort) {
-    const sortedByScoreQuery = 'SELECT username, email, score, playedGames, scorePercentage FROM `users` order by score DESC';
-    const sortedByPlayedGamesQuery = 'SELECT username, email, score, playedGames, scorePercentage FROM `users` order by playedGames DESC';
-    const sortedByScorePercentageQuery = 'SELECT username, email, score, playedGames, scorePercentage FROM `users` order by scorePercentage DESC';
+    const sortedByScoreQuery = 'SELECT username, email, score, playedGames, scorePercentage FROM `users` order by score DESC limit 10';
+    const sortedByPlayedGamesQuery = 'SELECT username, email, score, playedGames, scorePercentage FROM `users` order by playedGames DESC limit 10';
+    const sortedByScorePercentageQuery = 'SELECT username, email, score, playedGames, scorePercentage FROM `users` order by scorePercentage DESC limit 10';
 
     let query;
     if (sort.toLowerCase() === 'score') {
@@ -63,7 +63,7 @@ function getUserByUserId(userid) {
 
 function updateUser(userid, user) {
     return new Promise((resolve, reject) => {
-        pool.query('UPDATE users SET ? where userid = ? limit 10',
+        pool.query('UPDATE users SET ? where userid = ?',
         [user, userid], async function (error, results) {
             if (error) reject(error);
             else {
