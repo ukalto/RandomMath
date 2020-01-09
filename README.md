@@ -60,3 +60,6 @@ The password is hashed with **SHA-512** at the moment a user signs up. If somebo
 - Navigate to the `RandomMath_Backend/` direcotry and execute `npm start` to start the application.
 
 Now start a browser your choice and open the ***url*** localhost:4200 (The standard port from **Angular**).
+
+### Angular in detail
+You find further information to **Angular** in my second [Readme](https://github.com/ukalto/RandomMath/edit/master/RandomMath_Frontend/README.md)
