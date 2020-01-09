@@ -22,10 +22,11 @@ Angular is used for the frontend.
 `npm install -g @angular/cli` will install angular 
 
 ###### Write every command in the terminal
-- Navigate to the RandomMath_Frontend/ direcotry and type `npm install`, then type `npm start` to start the node_modules.
-- Navigate to the RandomMath_Backend/ direcotry and type `npm install`, then type `npm start` to start the node_modules.
-- Navigate to the RandomMath/data/db/ directory and type `docker-compose up`.
-- Navigate to the RandomMath_Frontend/ directory and type `npm install -g @angular/cli`.
+- Navigate to the RandomMath_Frontend/ direcotry and execute `npm install`, then type `npm start` to start the node_modules.
+- Navigate to the RandomMath_Backend/ direcotry and execute `npm install`, then type `npm start` to start the node_modules. Based on the *package.json* file, npm will download all required node_modules to run a Angular application.
+- Navigate to the RandomMath/data/db/ directory and execute `docker-compose up`.
+- Navigate to the RandomMath_Frontend/ directory and execute `npm install -g @angular/cli` to install the Angular CLI globally.
+
 
 
 ### Database
