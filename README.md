@@ -4,7 +4,7 @@ First of all, you have to download the following software:
 
 - [Docker](https://docs.docker.com)
 - [NodeJS](https://nodejs.org/en/)
-- [Git Bash](https://git-scm.com/downloads)
+- [Git](https://git-scm.com/downloads)
 
 ### Project structure
 The database is a MySQL database, which runs on a docker-container.
