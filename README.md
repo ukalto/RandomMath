@@ -52,7 +52,7 @@ The password is hashed with **SHA-512** at the moment a user signs up. If somebo
 - node_modules in frontend and backend package
 
 ### Get in use to the website
-`npm start` will start the node_modules
+`npm start` will start the application.
 
 ###### Write every command in the terminal
 - Navigate to the `RandomMath/data/db/` directory and execute `docker-compose up`, to start the container.
@@ -63,3 +63,7 @@ Now start a browser your choice and open the ***url*** http://localhost:4200/ (T
 
 ### Angular in detail
 You find further information to **Angular** in my second [Readme](https://github.com/ukalto/RandomMath/edit/master/RandomMath_Frontend/)
+
+### Software descritpion
+*Coming soon*
+If you wanna know more about the software and it's functions then read it at my description tab on the website.
