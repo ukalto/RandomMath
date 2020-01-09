@@ -1,4 +1,4 @@
-# SEPM Group Phase
+# RandomMath
 
 ## First Steps
 
