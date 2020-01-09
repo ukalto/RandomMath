@@ -25,7 +25,7 @@ Angular is used for the frontend.
 - Navigate to the `RandomMath_Frontend/` direcotry and execute `npm install`, then type `npm start` to start the application.
 - Navigate to the `RandomMath_Backend/` direcotry and execute `npm install`, then type `npm start` to start the application. Based on the *package.json* file, npm will download all required node_modules to run a Angular application.
 - Navigate to the `RandomMath/data/db/` directory and execute `docker-compose up`.
-- Navigate to the `RandomMath_Frontend/ directory and execute `npm install -g @angular/cli` to install the Angular CLI globally.
+- Navigate to the `RandomMath_Frontend/` directory and execute `npm install -g @angular/cli` to install the **Angular CLI globally**.
 
 
 
