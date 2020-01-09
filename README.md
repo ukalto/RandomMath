@@ -43,7 +43,7 @@ scorePercentage decimal(5,2)
 ```
 
 ### User handling
-The password is getting hashed with sha512, at the moment a user signs up. If somebody logs into the website, the hash instead of the origanal password is getting compared. Furthermore, the username is getting handeld with a bearer token when he is using the webiste, instead of his username.
+The password is hashed with **SHA-512** at the moment a user signs up. If somebody logs in to the website, the hash of the passwords will be compared. Furthermore, the session is handled with a bearer token. User data will only be sent at login or sign up.
 
 ### Files which are not in the repository
 - data/db
