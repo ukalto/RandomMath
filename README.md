@@ -14,7 +14,7 @@ NodeJS is used for the backend.
 Angular is used for the frontend.
 
 ### First steps
-Navigate with the terminal to the directory your choice and type: `git clone https://github.com/ukalto/RandomMath.git` to clone the directory.
+Navigate with the terminal to the directory your choice and type: `git clone https://github.com/ukalto/RandomMath.git` to clone the directory. Now open the project with an editor your choice. I recommend [VSCode](https://code.visualstudio.com).
 
 `npm install` will install the node_modules
 
