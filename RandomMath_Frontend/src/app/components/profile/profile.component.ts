@@ -17,9 +17,9 @@ export class ProfileComponent implements OnInit {
 
   constructor(private userService: UserService, private formBuilder: FormBuilder ,private router: Router) {
     this.profileForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      username: ['', [Validators.required, Validators.maxLength(45)]],
+      email: ['', [Validators.required, Validators.maxLength(45), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+      password: ['', [Validators.required, Validators.minLength(12)]],
       score: ['', [Validators.required]],
       playedGames: ['', [Validators.required]],
       scorePercentage: ['', [Validators.required]]

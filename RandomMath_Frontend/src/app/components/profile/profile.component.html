@@ -17,39 +17,43 @@
   
           <div class="card-body">
             <form class="form" [formGroup]="profileForm" (ngSubmit)="changeProfile()">
-  
               <div class="form-group">
-                  Username:
-                <input type="text" readonly name="username" value={{user.username}} formControlName="username" class="form-control" id="inputUsername"
-                       aria-describedby="usernameHelp" >
-                <div *ngIf="submitted && profileForm.controls.username.errors" class="error">
-                  <small class="form-text text-warning" *ngIf="profileForm.controls.username.errors.required">Your username is
-                    required!
-                  </small>
-                </div>
+                Username:
+              <input type="text" readonly value={{user.username}} formControlName="username" class="form-control" id="inputUsername"
+                     aria-describedby="usernameHelp" >
+              <div *ngIf="submitted && profileForm.controls.username.errors" class="error">
+                <small class="form-text text-warning" *ngIf="profileForm.controls.username.errors.required">Your username is
+                  required!
+                </small>
+                <small class="form-text text-warning" *ngIf="profileForm.controls.username.errors.maxlength">Your username is to long! Your username can't contain more than 45 symbols.
+                </small>
               </div>
+            </div>
 
               <div class="form-group">
                   E-Mail:
                 <input type="text" readonly name="email" value={{user.email}} formControlName="email" class="form-control" id="inputEmail"
                        aria-describedby="emailHelp" >
-                <div *ngIf="submitted && profileForm.controls.email.errors" class="error">
-                  <small class="form-text text-warning" *ngIf="profileForm.controls.email.errors.required">Your email is
-                    required!
-                  </small>
-                </div>
+                  <div *ngIf="submitted && profileForm.controls.email.errors" class="error">
+                      <small class="form-text text-warning" *ngIf="profileForm.controls.email.errors.required">Your E-Mail is
+                        required!
+                      </small>
+                      <small class="form-text text-warning" *ngIf="profileForm.controls.email.errors.maxlength">Your E-Mail is to long! Your E-Mail can't contain more than 45 symbols.
+                      </small>
+                      <small class="form-text text-warning" *ngIf="profileForm.controls.email.errors.pattern">This isn't a real E-Mail!</small>
+                    </div>
               </div>
   
               <div class="form-group">
                   Password:
-                <input type="password" readonly name="password" formControlName="password" class="form-control" id="password">
+                <input type="password" placeholder="*****" readonly name="password" formControlName="password" class="form-control" id="password">
                 <div *ngIf="submitted && profileForm.controls.password.errors" class="error">
                   <small class="form-text text-warning" *ngIf="profileForm.controls.password.errors.required">Your password
                     is
                     required!
                   </small>
                   <small class="form-text text-warning" *ngIf="profileForm.controls.password.errors.minlength">Your password
-                    must be at least 8 characters long!
+                    must be at least 12 characters long!
                   </small>
                 </div>
               </div>

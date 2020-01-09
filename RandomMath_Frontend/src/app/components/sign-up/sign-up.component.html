@@ -17,7 +17,6 @@
   
           <div class="card-body">
             <form class="form" [formGroup]="signUpForm" (ngSubmit)="signUpUser()">
-  
               <div class="form-group">
                 <label for="inputUsername">Username</label>
                 <input type="text" name="username" formControlName="username" class="form-control" id="inputUsername"
@@ -26,17 +25,21 @@
                   <small class="form-text text-warning" *ngIf="signUpForm.controls.username.errors.required">Your username is
                     required!
                   </small>
+                  <small class="form-text text-warning" *ngIf="signUpForm.controls.username.errors.maxlength">Your username is to long! Your username can't contain more than 45 symbols.
+                  </small>
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="inputEmail">Email</label>
-                <input type="email" name="email" formControlName="email" class="form-control" id="inputUsername"
+                <input type="email" name="email" formControlName="email" ngModel email class="form-control" id="inputUsername"
                        aria-describedby="emailHelp" placeholder="Enter email">
                 <div *ngIf="submitted && signUpForm.controls.email.errors" class="error">
-                  <small class="form-text text-warning" *ngIf="signUpForm.controls.email.errors.required">Your email is
-                    required!
+                  <small class="form-text text-warning" *ngIf="signUpForm.controls.email.errors.required">Your E-Mail is required!
                   </small>
+                  <small class="form-text text-warning" *ngIf="signUpForm.controls.email.errors.maxlength">Your E-Mail is to long! Your E-Mail can't contain more than 45 symbols.
+                  </small>
+                  <small class="form-text text-warning" *ngIf="signUpForm.controls.email.errors.pattern">This isn't a real E-Mail!</small>
                 </div>
               </div>
   
@@ -44,14 +47,11 @@
                 <label for="password">Password</label>
                 <input type="password" name="password" formControlName="password" class="form-control" id="password"
                        placeholder="Password">
-                <div *ngIf="submitted && signUpForm.controls.password.errors" class="error">
-                  <small class="form-text text-warning" *ngIf="signUpForm.controls.password.errors.required">Your password
-                    is
-                    required!
-                  </small>
-                  <small class="form-text text-warning" *ngIf="signUpForm.controls.password.errors.minlength">Your password
-                    must be at least 8 characters long!
-                  </small>
+                  <div *ngIf="submitted && signUpForm.controls.password.errors" class="error">
+                    <small class="form-text text-warning" *ngIf="signUpForm.controls.password.errors.required">Your password is required!
+                    </small>
+                    <small class="form-text text-warning" *ngIf="signUpForm.controls.password.errors.minlength">Your password must be at least 12 characters long!
+                    </small>
                 </div>
               </div>
   

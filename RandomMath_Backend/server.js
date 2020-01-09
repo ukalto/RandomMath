@@ -14,11 +14,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-app.get('/', (req, res) => {
-    res.send('Hello World, from express');
-});
-
 // Registration
 app.post('/users', async (req, res) => {
     const user = req.body;
@@ -92,6 +87,7 @@ app.patch('/users/me', auth.checkToken, async (req, res) => {
     }
 })
 
+//Score, playedGames, scorePercentage updaten
 app.post('/users/score', auth.checkToken, async (req, res)=>{
     const score = req.body.score;
     const username = req.decoded.username;
@@ -110,6 +106,7 @@ app.post('/users/score', auth.checkToken, async (req, res)=>{
     }
 })
 
+//leaderboard laden
 app.get('/users/leaderboard', auth.checkToken, async (req, res) => {
     const sort = req.query.sort;
 

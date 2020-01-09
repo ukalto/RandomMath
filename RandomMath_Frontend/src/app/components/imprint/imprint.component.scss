@@ -1,0 +1,46 @@
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+    float: left;
+    padding: 5px;
+  }
+  
+.maxicon{
+    border-radius: 50%;
+    width: 25%;
+    min-width: 3em;
+  }
+
+.name{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+  /* Clear floats after image containers */
+.row::after {
+content: "";
+clear: both;
+display: table;
+}
+
+.sticon{
+    width: 5em;
+}
+
+.twicon{
+    width: 4em;
+    margin-top: 0.2em;
+}
+
+.liicon{
+    width: 4em;
+    margin-top: 0.7em;
+}
+
+.ghicon{
+    width: 4em;
+    margin-top: 0.1em;
+}
+
+.inicon{
+    width: 2em;
+}

@@ -43,11 +43,11 @@ export class GameComponent implements OnInit {
   }
 
   startGame() {
-    this.startNextRoundTimer();
+    this.startNextRoundTimer5s();
     this.startNextRoundIn5Seconds();
   }
 
-  startNextRoundTimer() {
+  startNextRoundTimer5s() {
     this.nextRoundTimer = 5;
     this.nextRoundInterval = setInterval(() => {
       this.nextRoundTimer--;
@@ -57,8 +57,18 @@ export class GameComponent implements OnInit {
     }, 1000);
   }
 
+  startNextRoundTimer2s() {
+    this.nextRoundTimer = 2;
+    this.nextRoundInterval = setInterval(() => {
+      this.nextRoundTimer--;
+      if (this.nextRoundTimer === 0 || this.roundActive) {
+        clearInterval(this.nextRoundInterval);
+      }
+    }, 1000);
+  }
+
   startRoundTimer() {
-    this.roundTimer = 15;
+    this.roundTimer = 20;
     this.roundInterval = setInterval(() => {
       this.roundTimer--;
       if (this.roundTimer === 0 || !this.roundActive) {
@@ -79,7 +89,7 @@ export class GameComponent implements OnInit {
   startRoundTimeout() {
     this.roundTimeout = setTimeout(() => {
       this.stopRound();
-    }, 15000);
+    }, 20000);
   }
 
   clearMessages() {
@@ -95,8 +105,8 @@ export class GameComponent implements OnInit {
     if (this.currentRoundNumber !== 9) {
       this.currentRoundNumber++;
       this.currentRound = this.round[this.currentRoundNumber];
-      this.startNextRoundTimer();
-      this.startNextRoundIn5Seconds();
+      this.startNextRoundTimer2s();
+      this.startNextRoundIn2Seconds();
     } else {
       // end game
       this.successMessage = `Your score was ${this.score}.`;
@@ -113,6 +123,12 @@ export class GameComponent implements OnInit {
     setTimeout(() => {
       this.startRound();
     }, 5000);
+  }
+
+  startNextRoundIn2Seconds() {
+    setTimeout(() => {
+      this.startRound();
+    }, 2000);
   }
 
   checkResult() {

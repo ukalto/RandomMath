@@ -1,20 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-  <a class="navbar-brand ml-lg-5" href="">RandomMath</a>
+  <a class="navbar-brand ml-lg-5" href="" style="display:block;width:8em"><img id="logo1" src="./assets/img/logo_rm.png" width="40em" height="30em"> RandomMath</a>
   <button class="navbar-toggler ml-5" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="float:left">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" *ngIf="authService.isLoggedIn()" routerLink="/game" routerLinkActive="active">Game</a>
+        <a class="nav-link" routerLink="/game" routerLinkActive="active">Game</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="authService.isLoggedIn()" routerLink="/leader-board" routerLinkActive="active">Leaderboard</a>
+        <a class="nav-link" routerLink="/leader-board" routerLinkActive="active">Leaderboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="authService.isLoggedIn()" routerLink="/profile" routerLinkActive="active">Profile</a>
+        <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/data-protection" routerLinkActive="active">Data Protection</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/imprint" routerLinkActive="active">Imprint</a>
       </li>
     </ul>
     <ul class="navbar-nav mr-5">

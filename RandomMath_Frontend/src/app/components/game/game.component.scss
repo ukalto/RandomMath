@@ -1,6 +1,15 @@
-#start-btn {
-    width: 200px!important;
-    height: 100px;
+.btnstart{
+    width: 20%; 
+    height: 30%; 
+    font-size: 40px;
+    font-weight: bold;
+    color: #343a40;
+    min-width: 3em;
+
+    background: whitesmoke;
+
+    border-radius: 25px;
+    border: 2px solid #343a40;
 }
 
 #task {
@@ -11,14 +20,33 @@
     font-size: 2em;;
 }
 
+.timeborder {
+    padding: 5px;
+    margin: 0px 5px;
+    display: inline-block;
+    border: 1px solid red;
+    border-radius: 3px;
+}
+
 .border {
     padding: 5px;
     margin: 0px 5px;
     display: inline-block;
-    border: 1px solid #000;
+    border: 1px solid #343a40;
     border-radius: 3px;
 }
 
-#ok-btn {
-    height: 2em!important;
+.okbtn{
+    width: 7%; 
+    height: 20%; 
+    font-size: 30px;
+    font-weight: bold;
+    color: #343a40;
+    margin: 0px 0px 0px 5px ;
+    min-width: 2em;
+
+    background: whitesmoke;
+
+    border-radius: 25px;
+    border: 2px solid #343a40;
 }

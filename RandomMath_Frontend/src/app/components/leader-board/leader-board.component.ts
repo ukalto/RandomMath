@@ -26,13 +26,13 @@ export class LeaderBoardComponent implements OnInit {
   }
 
   sortPlayedGamesClicked() {
-    this.sort = 'Played games';
+    this.sort = 'Played Games';
     this.sortKey = 'playedGames';
     this.fetchData();
   }
 
   sortScorePercentageClicked() {
-    this.sort = 'Score percentage';
+    this.sort = 'Score Percentage';
     this.sortKey = 'scorePercentage';
     this.fetchData();
   }

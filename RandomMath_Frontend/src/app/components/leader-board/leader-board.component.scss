@@ -1,0 +1,29 @@
+.dropbtn{
+    background: whitesmoke;
+    color: #343a40;
+
+    border-radius: 25px;
+    border: 2px solid #343a40;
+    
+    margin: 10px 0px 10px 0px;
+    font-weight: bold;
+    font-size: 130%;
+    padding: 0px; 
+    width: 20%;
+    height: 20%; 
+    min-width: 15em;
+}
+
+.table{
+    background: white;
+    border: 3px solid #343a40;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.bar{
+    background-color: #343a40;
+    color: white;
+    border: 3px solid #343a40;
+    width: 30%;
+}

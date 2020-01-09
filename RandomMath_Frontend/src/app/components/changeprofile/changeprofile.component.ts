@@ -24,8 +24,8 @@ export class ChangeProfileComponent implements OnInit {
 
   constructor(private userService: UserService, private formBuilder: FormBuilder ,private router: Router) {
     this.changeProfileForm = this.formBuilder.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.minLength(8)]],
+      email: ['', [Validators.maxLength(45), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+      password: ['', [Validators.minLength(12)]]
     });
    }
 

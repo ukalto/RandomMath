@@ -15,7 +15,9 @@ import { GameComponent } from './components/game/game.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LeaderBoardComponent } from './components/leader-board/leader-board.component';
-import {ChangeProfileComponent} from './components/changeprofile/changeprofile.component'
+import {ChangeProfileComponent} from './components/changeprofile/changeprofile.component';
+import { ImprintComponent } from './components/imprint/imprint.component';
+import { DataProtectionComponent } from './components/data-protection/data-protection.component'
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import {ChangeProfileComponent} from './components/changeprofile/changeprofile.c
     SignUpComponent,
     ProfileComponent,
     LeaderBoardComponent,
-    ChangeProfileComponent
+    ChangeProfileComponent,
+    ImprintComponent,
+    DataProtectionComponent
   ],
   imports: [
     BrowserModule,

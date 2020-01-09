@@ -22,9 +22,9 @@ export class SignUpComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.signUpForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      username: ['', [Validators.required, Validators.maxLength(45)]],
+      email: ['', [Validators.required, Validators.maxLength(45), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+      password: ['', [Validators.required, Validators.minLength(12)]]
     });
   }
 
@@ -64,7 +64,7 @@ export class SignUpComponent implements OnInit {
         if (typeof error.error === 'object') {
           this.errorMessage = error.error.errorMessage;
         } else {
-          this.errorMessage = error.errorMessage;
+          this.errorMessage = error.error.errorMessage;
         }
       }
     );

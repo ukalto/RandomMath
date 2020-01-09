@@ -9,13 +9,25 @@ async function signUpUser(email, username, password) {
     return await new Promise(
         async (resolve, reject) => {
             if (!email || email.length < 5) {
-                const error = new Error('Email must not be empty');
+                const error = new Error('E-Mail must not be empty');
                 error.status = 422;
                 reject(error);
                 return;
             }    
+            if (!email || email.length >= 46) {
+                const error = new Error('E-Mail has to be smaller than 45 symbols');
+                error.status = 422;
+                reject(error);
+                return;
+            }  
             if (!username || username.length < 1) {
                 const error = new Error('Username must not be empty');
+                error.status = 422;
+                reject(error);
+                return;
+            }
+            if (!username || username.length >= 46) {
+                const error = new Error('Username has to be smaller than 45 symbols');
                 error.status = 422;
                 reject(error);
                 return;
@@ -62,20 +74,26 @@ function validatePassword(password) {
         error.status = 422;
         return error;
     }
-    if (password.length < 10) {
-        const error = new Error('Password must contain more than 9 symbols');
+    if (password.length <= 12) {
+        const error = new Error('Password must contain 12 or more symbols');
         error.status = 422;
         return error;
     }
 
     const atLeastOneLowercase = new RegExp("[a-z]+");
     const atLeastOneUppercase = new RegExp("[A-Z]+")
+    //const atLeastOneNumber = new RegExp("[0-9]+")
 
     if (!atLeastOneLowercase.test(password)) {
         const error = new Error('Password must contain at least one lower case letter');
         error.status = 422;
         return error;
     }
+    /*if (!atLeastOneNumber.test(password)) {
+        const error = new Error('Password must contain at least one number');
+        error.status = 422;
+        return error;
+    }*/
     if (!atLeastOneUppercase.test(password)) {
         const error = new Error('Password must contain at least one upper case letter');
         error.status = 422;
