@@ -65,6 +65,5 @@ Now start a browser your choice and open the ***url*** http://localhost:4200/ (T
 You find further information to **Angular** in my second [Readme](https://github.com/ukalto/RandomMath/edit/master/RandomMath_Frontend/)
 
 ### Software descritpion
-*Coming soon*
 
-If you wanna know more about the software and it's functions then read it at my description tab on the website.
+If you wanna know more about the software and it's functions then read it at the game-description tab on my website.
