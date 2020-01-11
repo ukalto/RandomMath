@@ -10,6 +10,7 @@ import {LeaderBoardComponent} from './components/leader-board/leader-board.compo
 import { ImprintComponent } from './components/imprint/imprint.component';
 import { DataProtectionComponent } from './components/data-protection/data-protection.component';
 import {AuthGuard} from './guards/auth.guard';
+import { GameDescriptionComponent } from './components/game-description/game-description.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,8 +20,9 @@ const routes: Routes = [
   {path: 'profile', canActivate: [AuthGuard], component: ProfileComponent},
   {path: 'leader-board', canActivate:[AuthGuard], component: LeaderBoardComponent},
   {path: 'changeprofile', canActivate: [AuthGuard], component: ChangeProfileComponent},
-  {path: 'data-protection', canActivate: [AuthGuard], component: DataProtectionComponent},
-  {path: 'imprint', canActivate: [AuthGuard], component: ImprintComponent}
+  {path: 'data-protection', component: DataProtectionComponent},
+  {path: 'game-description', component: GameDescriptionComponent},
+  {path: 'imprint', component: ImprintComponent}
 ];
 
 @NgModule({

@@ -17,7 +17,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { LeaderBoardComponent } from './components/leader-board/leader-board.component';
 import {ChangeProfileComponent} from './components/changeprofile/changeprofile.component';
 import { ImprintComponent } from './components/imprint/imprint.component';
-import { DataProtectionComponent } from './components/data-protection/data-protection.component'
+import { DataProtectionComponent } from './components/data-protection/data-protection.component';
+import { GameDescriptionComponent } from './components/game-description/game-description.component'
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { DataProtectionComponent } from './components/data-protection/data-prote
     LeaderBoardComponent,
     ChangeProfileComponent,
     ImprintComponent,
-    DataProtectionComponent
+    DataProtectionComponent,
+    GameDescriptionComponent
   ],
   imports: [
     BrowserModule,
